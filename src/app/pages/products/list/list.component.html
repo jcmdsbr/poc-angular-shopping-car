@@ -1,0 +1,46 @@
+<div class="uk-container">
+    <nav class="uk-navbar-container" uk-navbar>
+        <div class="uk-navbar-center">
+            <ul class="uk-navbar-nav">
+                <li class="uk-active">Estoque da Lojinha!</li>
+            </ul>
+        </div>
+        <div class="uk-navbar-right">
+            <ul class="uk-navbar-nav">
+                <li class="uk-active"><a routerLink="/product"><span class="uk-icon uk-margin-small-right"
+                            uk-icon="icon: plus"></span>
+                        Adicionar</a></li>
+            </ul>
+        </div>
+    </nav>
+</div>
+<br />
+<div class="uk-container">
+    <div class="uk-overflow-auto">
+        <table class="uk-table uk-table-striped uk-table-hover  uk-table-middle uk-table-responsive">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Nome</th>
+                    <th>Descrição</th>
+                    <th>Preço</th>
+                    <th>Quantidade</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let product of products | async">
+                    <td>{{ product.id }}</td>
+                    <td>{{ product.title }}</td>
+                    <td>{{ product.description }}</td>
+                    <td>{{ product.amount }}</td>
+                    <td>{{ product.quantity }}</td>
+                    <td>
+                        <button class="uk-button uk-button-default" (click)="update(product)">Editar</button>
+                        <button class="uk-button uk-button-default" (click)="delete(product)">Excluir</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

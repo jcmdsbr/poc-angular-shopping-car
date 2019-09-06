@@ -1,0 +1,46 @@
+<div class="uk-container">
+    <nav class="uk-navbar-container" uk-navbar>
+        <div class="uk-navbar-center">
+            <ul class="uk-navbar-nav">
+                <li class="uk-active">{{ title }} de Produto!</li>
+            </ul>
+        </div>
+    </nav>
+</div>
+<br />
+<div class="uk-container">
+    <div class="uk-card uk-card-default uk-card-body">
+        <form [formGroup]="form">
+            <div class="uk-margin">
+                <input type="text" [dropSpecialCharacters]="false" mask="S-0*" class="uk-input uk-form-meddium"
+                    placeholder="Código" formControlName="id">
+            </div>
+            <div class="uk-margin">
+                <input type="text" class="uk-input uk-form-meddium" placeholder="Nome" formControlName="title">
+            </div>
+            <div class="uk-margin">
+                <input type="text" class="uk-input uk-form-meddium" placeholder="Descrição"
+                    formControlName="description">
+            </div>
+            <div class="uk-margin">
+                <input type="text" prefix="R$ " mask="0*.99" class="uk-input uk-form-meddium" placeholder="Preço"
+                    formControlName="amount">
+            </div>
+            <div class="uk-margin">
+                <input type="number" class="uk-input uk-form-meddium" placeholder="Quantidade"
+                    formControlName="quantity">
+            </div>
+            <div class="uk-margin">
+                <select class="uk-select" placeholder="Categorias" formControlName="categoryId">
+                    <option value="">Selecione uma Categoria</option>
+                    <option value="{{category.id}}" *ngFor="let category of categories | async">
+                        {{category.description}}
+                    </option>
+                </select>
+            </div>
+        </form>
+        <button class="uk-button uk-button-primary" (click)="submit()">Salvar</button>
+        <button class="uk-button uk-button-default" (click)="clear()">Limpar</button>
+        <button class="uk-button uk-button-default" (click)="back()">Voltar</button>
+    </div>
+</div>
