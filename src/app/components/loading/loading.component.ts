@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-loading',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./loading.component.css']
 })
 export class LoadingComponent implements OnInit {
+  @Input() data: Observable<any[]>
 
   constructor() { }
 

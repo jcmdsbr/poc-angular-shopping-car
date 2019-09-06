@@ -17,7 +17,9 @@
 <br />
 <div class="uk-container">
     <div class="uk-overflow-auto">
-        <table class="uk-table uk-table-striped uk-table-hover  uk-table-middle uk-table-responsive">
+        <app-loading [data]="products"></app-loading>
+        <table *ngIf="(products | async )?.length > 0"
+            class="uk-table uk-table-striped uk-table-hover  uk-table-middle uk-table-responsive">
             <thead>
                 <tr>
                     <th>Código</th>

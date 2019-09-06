@@ -42,6 +42,7 @@ export class FormComponent implements OnInit {
 
     if (this.productId) {
       this.title = "Alteração";
+      this.isUpdate = true;
       this.productService.getById(this.productId).subscribe((res) => {
         this.form.patchValue(res);
         this.form.controls['id'].disable();
@@ -51,10 +52,13 @@ export class FormComponent implements OnInit {
   submit() {
     //TODO melhorar
     if (this.form.valid) {
-      if (this.productId) {
-        this.productService.update(this.form.value).subscribe(() => this.back());
+      let product = this.form.value;
+
+      if (this.isUpdate) {
+        product.id = this.productId;
+        this.productService.update(product).subscribe(() => this.back());
       } else {
-        this.productService.create(this.form.value).subscribe(() => this.back());
+        this.productService.create(product).subscribe(() => this.back());
       }
     } else {
       alert("Existem dados incorretos em seu cadastro.");
