@@ -8,6 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { NgxMaskModule, IConfig } from 'ngx-mask'
 import { AuthGuard } from './guards/auth.guard';
+import { AdmGuard } from './guards/adm.guard';
 
 import { AppComponent } from './app.component';
 import { ListComponent } from './pages/products/list/list.component';
@@ -36,7 +37,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [AuthGuard],
+  providers: [AuthGuard, AdmGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

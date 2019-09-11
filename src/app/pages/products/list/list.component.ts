@@ -5,6 +5,7 @@ import { ProductService } from 'src/app/services/product.service';
 import { Router } from '@angular/router';
 import { UserUtil } from 'src/app/utils/user.util';
 import { ToastrService } from 'ngx-toastr';
+import { User } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-product-list',
@@ -13,7 +14,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ListComponent implements OnInit {
   products: Observable<Product[]>;
-
+  user: User;
   constructor(
     private productService: ProductService,
     private router: Router,
@@ -21,6 +22,7 @@ export class ListComponent implements OnInit {
 
   ngOnInit() {
     this.loadingProducts();
+    this.user = UserUtil.get();
   }
 
   loadingProducts() {
@@ -32,6 +34,10 @@ export class ListComponent implements OnInit {
   }
 
   delete(product: Product) {
+    if (!UserUtil.isAdm()) {
+      this.toastr.error("Você não tem permissão para executar essa ação.");
+      return;
+    }
     this.productService.delete(product.id).subscribe(() => {
       this.toastr.success("Produto removido com sucesso!");
       this.loadingProducts();

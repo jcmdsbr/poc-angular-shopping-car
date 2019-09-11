@@ -47,7 +47,7 @@ export class SignupComponent implements OnInit {
   submit() {
     if (this.form.valid) {
       let user = this.form.value;
-      this.service.login(user).subscribe(() => {
+      this.service.signup(user).subscribe(() => {
         UserUtil.set(user);
         this.toastr.success("Usuário cadastrado com sucesso!");
         this.router.navigate(["/home"]);

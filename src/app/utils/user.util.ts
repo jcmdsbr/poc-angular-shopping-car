@@ -1,4 +1,9 @@
 export class UserUtil {
+
+    static isAdm(): boolean {
+        const user = this.get();
+        return user.roles.includes("ADM");
+    }
     static get(): any {
         const data = localStorage.getItem('shopping.user');
         if (!data) return null;

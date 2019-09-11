@@ -5,12 +5,17 @@ import { FormComponent } from './pages/products/form/form.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { AuthGuard } from './guards/auth.guard';
+import { AdmGuard } from './guards/adm.guard';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'home', component: ListComponent, canActivate: [AuthGuard] },
-  { path: 'product', component: FormComponent, canActivate: [AuthGuard], children: [ { path: 'product/:id', component: FormComponent} ] },
+  {
+    path: 'product', component: FormComponent,
+    canActivate: [AuthGuard, AdmGuard],
+    children: [{ path: 'product/:id', component: FormComponent }]
+  },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', redirectTo: '/home' }
 ]

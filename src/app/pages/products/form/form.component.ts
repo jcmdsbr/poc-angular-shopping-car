@@ -68,8 +68,8 @@ export class FormComponent implements OnInit {
     this.form.reset();
   }
 
-  back(message: string) {
-    this.toastr.success(message);
+  back(message: string = "") {
+    if (message.length != 0) { this.toastr.success(message); }
     this.router.navigate([""]);
   }
 }

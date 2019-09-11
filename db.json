@@ -2,14 +2,32 @@
   "products": [
     {
       "id": "a-12312312",
-      "title": "12312312",
+      "title": "1231231232",
       "description": "1231231",
-      "amount": "123123",
-      "quantity": 1321231,
+      "amount": "12312312",
+      "quantity": 1231231,
       "categoryId": "1"
     }
   ],
-  "users": [],
+  "users": [
+    {
+      "email": "admin@admin.com",
+      "password": "asdasdasd",
+      "id": 1,
+      "roles": [
+        "ADM",
+        "SAMPLE"
+      ]
+    },
+    {
+      "email": "sample@sample.com",
+      "password": "asdasdasd",
+      "id": 2,
+      "roles": [
+        "SAMPLE"
+      ]
+    }
+  ],
   "categories": [
     {
       "id": 1,
