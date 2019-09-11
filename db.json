@@ -1,5 +1,15 @@
 {
-  "products": [],
+  "products": [
+    {
+      "id": "a-12312312",
+      "title": "12312312",
+      "description": "1231231",
+      "amount": "123123",
+      "quantity": 1321231,
+      "categoryId": "1"
+    }
+  ],
+  "users": [],
   "categories": [
     {
       "id": 1,

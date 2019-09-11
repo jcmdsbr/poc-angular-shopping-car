@@ -12,26 +12,26 @@
     <div class="uk-card uk-card-default uk-card-body">
         <form [formGroup]="form">
             <div class="uk-margin">
-                <input type="text" [dropSpecialCharacters]="false" mask="S-0*" class="uk-input uk-form-meddium"
+                <input type="text" [dropSpecialCharacters]="false" mask="S-0*"   class="uk-input uk-form-meddium" [ngClass]="{'uk-form-danger': (!form.controls.id.valid && !form.controls.id.pristine)}"
                     placeholder="Código" formControlName="id">
             </div>
             <div class="uk-margin">
-                <input type="text" class="uk-input uk-form-meddium" placeholder="Nome" formControlName="title">
+                <input type="text" class="uk-input uk-form-meddium" [ngClass]="{'uk-form-danger': (!form.controls.title.valid && !form.controls.title.pristine)}" placeholder="Nome" formControlName="title">
             </div>
             <div class="uk-margin">
-                <input type="text" class="uk-input uk-form-meddium" placeholder="Descrição"
+                <input type="text" class="uk-input uk-form-meddium" [ngClass]="{'uk-form-danger': (!form.controls.description.valid && !form.controls.description.pristine)}" placeholder="Descrição"
                     formControlName="description">
             </div>
             <div class="uk-margin">
-                <input type="text" prefix="R$ " mask="0*.99" class="uk-input uk-form-meddium" placeholder="Preço"
+                <input type="text" prefix="R$ " mask="9*.99" class="uk-input uk-form-meddium" [ngClass]="{'uk-form-danger': (!form.controls.amount.valid && !form.controls.amount.pristine)}" placeholder="Preço"
                     formControlName="amount">
             </div>
             <div class="uk-margin">
-                <input type="number" class="uk-input uk-form-meddium" placeholder="Quantidade"
+                <input type="number" class="uk-input uk-form-meddium" [ngClass]="{'uk-form-danger': (!form.controls.quantity.valid && !form.controls.quantity.pristine)}" placeholder="Quantidade"
                     formControlName="quantity">
             </div>
             <div class="uk-margin">
-                <select class="uk-select" placeholder="Categorias" formControlName="categoryId">
+                <select class="uk-select" placeholder="Categorias"  [ngClass]="{'uk-form-danger': (!form.controls.categoryId.valid && !form.controls.categoryId.pristine)}" formControlName="categoryId">
                     <option value="">Selecione uma Categoria</option>
                     <option value="{{category.id}}" *ngFor="let category of categories | async">
                         {{category.description}}
@@ -39,8 +39,10 @@
                 </select>
             </div>
         </form>
-        <button class="uk-button uk-button-primary" (click)="submit()">Salvar</button>
-        <button class="uk-button uk-button-default" (click)="clear()">Limpar</button>
-        <button class="uk-button uk-button-default" (click)="back()">Voltar</button>
+        <div class="uk-margin uk-text-right">
+            <button  [disabled]="form.invalid" class="uk-button uk-button-primary" (click)="submit()">Salvar</button>
+            <button class="uk-button uk-button-default" (click)="clear()">Limpar</button>
+            <button class="uk-button uk-button-default" (click)="back()">Voltar</button>
+        </div>
     </div>
 </div>

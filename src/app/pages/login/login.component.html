@@ -1,0 +1,29 @@
+<div class="uk-flex-center" uk-grid>
+    <div class="uk-width-1-2@m">
+        <div class="uk-card uk-card-default uk-card-body">
+            <h3 class="uk-card-title">Autentique-se</h3>
+            <form [formGroup]="form">
+                <div class="uk-margin">
+                    <input type="email" class="uk-input uk-form-large" placeholder="E-mail" formControlName="email"
+                        [ngClass]="{'uk-form-danger': (!form.controls.email.valid && !form.controls.email.pristine)}">
+                    <span class="uk-text-danger"
+                        *ngIf="form.controls.email.invalid && !form.controls.email.pristine">E-mail
+                        inválido</span>
+                </div>
+                <div class="uk-margin">
+                    <input type="password" class="uk-input uk-form-large" placeholder="Senha" formControlName="password"
+                        [ngClass]="{'uk-form-danger': (form.controls.password.invalid && !form.controls.password.pristine)}">
+                    <span class="uk-text-danger"
+                        *ngIf="form.controls.password.invalid && !form.controls.password.pristine">Password
+                        inválido</span>
+                </div>
+            </form>
+            <div class="uk-margin uk-text-right">
+                <button class="uk-button uk-button-default" routerLink="/signup"
+                    routerLinkActive="active">Cadastrar</button>
+                <button [disabled]="form.invalid" class="uk-button uk-button-default" (click)="submit()">Entrar</button>
+
+            </div>
+        </div>
+    </div>
+</div>

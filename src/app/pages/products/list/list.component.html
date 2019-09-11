@@ -1,20 +1,4 @@
-<div class="uk-container">
-    <nav class="uk-navbar-container" uk-navbar>
-        <div class="uk-navbar-center">
-            <ul class="uk-navbar-nav">
-                <li class="uk-active">Estoque da Lojinha!</li>
-            </ul>
-        </div>
-        <div class="uk-navbar-right">
-            <ul class="uk-navbar-nav">
-                <li class="uk-active"><a routerLink="/product"><span class="uk-icon uk-margin-small-right"
-                            uk-icon="icon: plus"></span>
-                        Adicionar</a></li>
-            </ul>
-        </div>
-    </nav>
-</div>
-<br />
+<app-navbar></app-navbar>
 <div class="uk-container">
     <div class="uk-overflow-auto">
         <app-loading [data]="products"></app-loading>
@@ -38,8 +22,12 @@
                     <td>{{ product.amount }}</td>
                     <td>{{ product.quantity }}</td>
                     <td>
-                        <button class="uk-button uk-button-default" (click)="update(product)">Editar</button>
-                        <button class="uk-button uk-button-default" (click)="delete(product)">Excluir</button>
+                        <a (click)="update(product)">
+                            <span class="uk-icon uk-margin-small-right" uk-icon="icon: pencil"></span>
+                        </a>
+                        <a (click)="delete(product)">
+                            <span class="uk-icon uk-margin-small-right" uk-icon="icon: trash"></span>
+                        </a>
                     </td>
                 </tr>
             </tbody>

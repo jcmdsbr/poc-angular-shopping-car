@@ -3,6 +3,8 @@ import { Observable } from 'rxjs';
 import { Product } from 'src/app/models/product.model';
 import { ProductService } from 'src/app/services/product.service';
 import { Router } from '@angular/router';
+import { UserUtil } from 'src/app/utils/user.util';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-product-list',
@@ -14,7 +16,8 @@ export class ListComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
-    private router: Router) { }
+    private router: Router,
+    private toastr: ToastrService) { }
 
   ngOnInit() {
     this.loadingProducts();
@@ -29,6 +32,10 @@ export class ListComponent implements OnInit {
   }
 
   delete(product: Product) {
-    this.productService.delete(product.id).subscribe(() => this.loadingProducts());
+    this.productService.delete(product.id).subscribe(() => {
+      this.toastr.success("Produto removido com sucesso!");
+      this.loadingProducts();
+    });
   }
+
 }

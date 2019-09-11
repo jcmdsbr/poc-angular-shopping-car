@@ -7,6 +7,7 @@ import { Category } from 'src/app/models/category.model';
 import { CategoryService } from 'src/app/services/category.service';
 import { ProductService } from 'src/app/services/product.service';
 import { Product } from 'src/app/models/product.model';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
@@ -25,6 +26,7 @@ export class FormComponent implements OnInit {
     private categoryService: CategoryService,
     private productService: ProductService,
     private fb: FormBuilder,
+    private toastr: ToastrService,
   ) {
     this.productId = this.route.snapshot.paramMap.get("id");
     this.form = this.fb.group({
@@ -53,15 +55,12 @@ export class FormComponent implements OnInit {
     //TODO melhorar
     if (this.form.valid) {
       let product = this.form.value;
-
       if (this.isUpdate) {
         product.id = this.productId;
-        this.productService.update(product).subscribe(() => this.back());
+        this.productService.update(product).subscribe(() => this.back("Produto alterado com sucesso!"));
       } else {
-        this.productService.create(product).subscribe(() => this.back());
+        this.productService.create(product).subscribe(() => this.back("Produto cadastrado com sucesso!"));
       }
-    } else {
-      alert("Existem dados incorretos em seu cadastro.");
     }
   }
 
@@ -69,7 +68,8 @@ export class FormComponent implements OnInit {
     this.form.reset();
   }
 
-  back() {
+  back(message: string) {
+    this.toastr.success(message);
     this.router.navigate([""]);
   }
 }
