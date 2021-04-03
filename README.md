@@ -1,27 +1,32 @@
-# ShoppingCart
+# The ShoppingCart :sunglasses:
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.2.
+Study project for the Angular 8 course taught by @andrebaltieri at the company 5by5
 
-## Development server
+## Give a Star! :star:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+If you liked the project, please give a star ;)
 
-## Code scaffolding
+## You need some of the fallowing tools :exclamation:
+
+-  Angular 8+
+
+## Description :books:
+
+- Angular is an application design framework and development platform for creating efficient and sophisticated single-page apps.
+
+- These Angular docs help you learn and use the Angular framework and development platform, from your first application to optimizing complex single-page apps for enterprises. Tutorials and guides include downloadable examples to accelerate your projects.
+
+### Code scaffolding :construction:
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+## Startup :heavy_check_mark:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+```sh
+ng build // to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build
+ng test  // to execute the unit tests via Karma
+ng e2e   // to execute the end-to-end tests via Protractor
+ng serve // to run localy and navigate to `http://localhost:4200/`
+```
+**Check official documentation** [Redirect](https://angular.io/docs)
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
